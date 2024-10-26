@@ -30,7 +30,7 @@ def descriptors_X(descriptors,data):
     if descriptors == 'barrier':
         return data[['T','Barrier']]
     elif descriptors == 'nmr':
-        return data[['T','NMR-H','NMR-1stC','NMR-2ndN1','NMR-2ndN2','NMR-2ndN3']]
+        return data[['T','NH','N1','N2-1','N2-2','N2-3']]
     
 def model(models):
     random_state = 42
@@ -38,7 +38,7 @@ def model(models):
     if models == 'RF':
         reg = RandomForestRegressor(random_state=random_state, n_estimators=10)
     elif models == 'XGB':
-        reg = XGBRegressor(random_state=random_state, n_estimators=100)
+        reg = XGBRegressor(random_state=random_state, n_estimators=1600, learning_rate=0.01)
     elif models == 'KNeighbors':
         reg = KNeighborsRegressor()
     elif models == 'AdaBoost':
